@@ -1,0 +1,133 @@
+/* Thermo Lab 3D: shared design system, "Lagoon".
+   Soft rounded surfaces, a serif display face, teal brand colour. Heat colours (--ice/--ember) are reserved for the simulation itself.
+   Token names are unchanged so every page and script keeps working. */
+:root{
+  color-scheme:light dark;
+  --paper:#eef3f6; --paper2:#e2eaef; --card:#ffffff; --track:#d5e0e7;
+  --ink:#10222e; --ink2:#53697a; --line:#d3dfe7;
+  --brand:#0f8f8a; --brand2:#2563eb;
+  --ember:#f0563a; --amber:#e9971a; --ice:#2f8fd8; --violet:#6d4fd6; --moss:#2f9e6b; --rose:#d6455d;
+  --on-ember:#fff;
+  --scr:#0b1720; --scr-ink:#e6f1f5; --scr-dim:#7f98a6; --scr-line:rgba(255,255,255,.09);
+  --ramp:linear-gradient(90deg,#2b2f8f,#7a3cc0 22%,#d1306f 45%,#ff6a3d 68%,#ffb23e 86%,#fff1c2);
+  --heat:1;
+  --hot:color-mix(in oklab,var(--ice) calc((1 - var(--heat)) * 100%),var(--ember));
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",sans-serif;
+  --mono:ui-monospace,"JetBrains Mono","SF Mono","Cascadia Mono",Consolas,monospace;
+  --r:18px;
+  --shadow:0 1px 2px rgba(16,34,46,.06),0 12px 32px -16px rgba(16,34,46,.28);
+  --shadow-hover:0 2px 4px rgba(16,34,46,.08),0 22px 40px -18px rgba(16,34,46,.38);
+  --bg:var(--paper); --panel:var(--card); --panel2:var(--paper2); --border:var(--line);
+  --text:var(--ink); --muted:var(--ink2);
+  --cyan:var(--brand); --blue:var(--brand2); --accent:var(--brand); --accent2:var(--violet);
+  --green:var(--moss); --purple:var(--violet); --orange:var(--amber); --warning:var(--amber);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#08131a; --paper2:#0e1d27; --card:#0f202b; --track:#1a2f3d;
+    --ink:#e8f2f6; --ink2:#8aa3b2; --line:#1d3342;
+    --brand:#3fd0c4; --brand2:#6ea3ff;
+    --ember:#ff6b4a; --amber:#ffb84a; --ice:#5cc3f2; --violet:#a28bff; --moss:#6fdba6; --rose:#ff7d8f;
+    --on-ember:#0a1117;
+    --shadow:0 1px 0 rgba(255,255,255,.04) inset,0 16px 34px -18px rgba(0,0,0,.85);
+    --shadow-hover:0 1px 0 rgba(255,255,255,.06) inset,0 24px 44px -18px rgba(0,0,0,.95);
+  }
+}
+html body{
+  background:radial-gradient(900px 520px at 8% -8%,color-mix(in srgb,var(--brand) 14%,transparent),transparent 62%),
+    radial-gradient(800px 520px at 100% 100%,color-mix(in srgb,var(--brand2) 12%,transparent),transparent 62%),var(--paper);
+  background-attachment:fixed;color:var(--ink);font-family:var(--sans);
+}
+html body::before{content:none}
+html h1,html h2,html h3,html .brand,html .site-nav-title,html .nav-brand strong,html .code{font-family:var(--display);font-weight:600;letter-spacing:-.01em;text-transform:none}
+html h1{line-height:1.08}
+::selection{background:var(--brand);color:var(--on-ember)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:8px}
+
+html .eyebrow,html .section-label,html .nav-label,html .site-nav-label,html .status,html .submitted-label,html .ref-type{
+  font:600 12px var(--sans);letter-spacing:.06em;text-transform:none;color:var(--brand);
+}
+html .eyebrow::before{content:"";display:inline-block;width:8px;height:8px;margin-right:9px;border-radius:50%;background:var(--brand);vertical-align:1px}
+
+/* surfaces */
+html .card,html .module,html .mode,html .contents,html .content-card,html .member-card,html .submitted-card,
+html .acknowledgment,html .reference,html .panel,html .entry,html .badge-card,html .progress,html .module-card,
+html .quick-card,html .overview-panel,html .info-item,html .note,html main:has(.code){
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);color:var(--ink);
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+}
+html .card:hover,html .module:hover,html .member-card:hover,html .reference:hover,html .content-card:hover,
+html .module-card:hover,html .quick-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);border-color:color-mix(in srgb,var(--brand) 55%,var(--line))}
+html .info-item,html .entry{background:var(--paper2);box-shadow:none}
+html .note{border-left:4px solid var(--amber)}
+html .card p,html .module p,html .mode p,html .content-card p,html .reference p,html .badge-card p,html .entry p{color:var(--ink2)}
+html .brand-icon,html .module-icon,html .mode-icon,html .member-icon,html .quick-icon,html .section-number,
+html .step-number,html .badge-icon,html .notice-icon,html .site-nav-logo{
+  background:color-mix(in srgb,var(--brand) 13%,var(--card));border:0;color:var(--brand);border-radius:14px;
+}
+html .badge-icon{filter:grayscale(1);opacity:.5}
+html .badge-card.unlocked{border-color:var(--moss);background:color-mix(in srgb,var(--moss) 9%,var(--card))}
+html .badge-card.unlocked .badge-icon{filter:none;opacity:1;background:color-mix(in srgb,var(--moss) 18%,var(--card))}
+html .unlocked .status{color:var(--moss)}
+html .tech,html .pill,html .ref-type{background:color-mix(in srgb,var(--brand) 8%,transparent);border:0;color:var(--ink2);border-radius:99px;font-family:var(--sans)}
+html .callout,html .notice{background:color-mix(in srgb,var(--amber) 10%,var(--card));border:1px solid color-mix(in srgb,var(--amber) 40%,transparent);border-radius:var(--r);color:var(--ink)}
+html .formula{background:var(--scr);border:0;color:#ffd27a;font-family:var(--mono);border-radius:12px}
+
+/* bars, buttons */
+html nav,html header{background:color-mix(in srgb,var(--paper) 80%,transparent);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+html .nav-links a,html .home-link{background:var(--card);color:var(--ink2);border:1px solid var(--line);border-radius:99px;font:500 13px var(--sans)}
+html .nav-links a:hover,html .home-link:hover{color:var(--brand);border-color:var(--brand)}
+html footer{color:var(--ink2);border-top:1px solid var(--line)}
+html footer span,html footer strong{color:var(--brand)}
+html .btn,html a.action,html .btn-primary{
+  background:var(--brand);color:var(--on-ember);border:0;border-radius:99px;padding-inline:20px;
+  font:600 14px var(--sans);letter-spacing:0;text-transform:none;text-shadow:none;box-shadow:0 10px 22px -12px var(--brand);transition:transform .15s,box-shadow .15s;
+}
+html .btn:hover,html a.action:hover{transform:translateY(-2px);box-shadow:0 14px 26px -12px var(--brand)}
+html .btn.secondary,html .btn-secondary,html a.secondary{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+html .btn.danger{background:var(--rose);color:#fff}
+
+/* dashboard */
+html .hero{background:linear-gradient(135deg,color-mix(in srgb,var(--brand) 16%,var(--card)),var(--card) 62%);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+html .hero::before{border-color:color-mix(in srgb,var(--brand) 30%,transparent);box-shadow:0 0 0 35px color-mix(in srgb,var(--brand) 6%,transparent),0 0 0 75px color-mix(in srgb,var(--brand) 4%,transparent)}
+html .hero h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+html .hero p,html .section-description,html .objective{color:var(--ink2)}
+html .hero-art{filter:drop-shadow(0 0 26px color-mix(in srgb,var(--brand) 40%,transparent))}
+html .menu-button{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:99px;box-shadow:var(--shadow);-webkit-backdrop-filter:none;backdrop-filter:none}
+html .nav-drawer{background:var(--paper);border-right:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
+html .nav-link{color:var(--ink2);border-radius:12px}
+html .nav-link:hover,html .nav-link.active{background:color-mix(in srgb,var(--brand) 12%,transparent);color:var(--ink);border-color:transparent}
+html .module-action{color:var(--brand);font-family:var(--sans);font-weight:600}
+
+/* journal / achievements */
+html .sub,html .entry small,html .empty,html .field label,html .badge-card p{color:var(--ink2)}
+html .field input,html .field select,html .field textarea{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:12px}
+html .field input:focus,html .field textarea:focus,html .field select:focus{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 22%,transparent)}
+html .progress-line{background:var(--track);border:0;border-radius:99px}
+html .progress-line span{background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:99px}
+html .empty{border:1px dashed var(--ink2);background:transparent;border-radius:var(--r)}
+html .code{color:var(--brand);text-shadow:none}
+
+/* floating site menu: a pill tab docked bottom-centre */
+html #site-nav-toggle{left:50%;right:auto;bottom:16px;transform:translateX(-50%);width:auto;height:44px;padding:0 22px;border-radius:99px;font-size:18px;background:var(--scr);color:var(--scr-ink);border:1px solid var(--scr-line);box-shadow:var(--shadow-hover);-webkit-backdrop-filter:none;backdrop-filter:none}
+html #site-nav-toggle:hover{transform:translateX(-50%) translateY(-2px);border-color:var(--brand);color:var(--brand)}
+html #site-nav-backdrop{background:rgba(4,10,14,.5)}
+html #site-nav{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-hover);-webkit-backdrop-filter:none;backdrop-filter:none;font-family:var(--sans)}
+html .site-nav-brand,html .site-nav-footer{border-color:var(--line)}
+html .site-nav-subtitle,html .site-nav-footer{color:var(--ink2)}
+html .site-nav-links a{color:var(--ink2);border-radius:12px}
+html .site-nav-links a:hover{background:color-mix(in srgb,var(--brand) 10%,transparent);border-color:transparent;color:var(--ink)}
+html .site-nav-links a.active{background:color-mix(in srgb,var(--brand) 16%,transparent);border-color:transparent;color:var(--ink)}
+
+/* toast + easter egg */
+html #thermo-toast{background:var(--scr);color:var(--scr-ink);border:0;border-radius:99px;font:600 13px var(--sans);box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
+html #thermo-secret{background:color-mix(in srgb,var(--paper) 94%,transparent);color:var(--ink);font-family:var(--sans)}
+html #thermo-secret .secret-card{background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow-hover)}
+html #thermo-secret p{color:var(--ink2)}
+html #thermo-secret h2{font-family:var(--display)}
+html #thermo-secret button{background:var(--brand);color:var(--on-ember);border:0;border-radius:99px;font:600 13px var(--sans)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+html .notice strong{color:var(--amber)}
+html .notice p,html .callout p{color:var(--ink2)}
+html .notice-icon{background:color-mix(in srgb,var(--amber) 18%,var(--card));color:var(--amber)}
