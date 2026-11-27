@@ -38,15 +38,10 @@ This is a static site — GitHub Pages can host it without a backend.
 2. In your repository settings, enable **GitHub Pages** and set the source to the branch/folder containing these files (typically the root of `main`).
 3. Visit the published URL to use the project.
 
-Published simulation URL:  https://unknown3982938.github.io/Thermal-Simulator/
+Published simulation URL:  
 
 > **Note:** The 3D simulation loads Three.js from a CDN, so an internet connection is required for that page to work. Additionally, this repo is not intended for commercial use - it is intended for personal school project.
 
-## License
-
-MIT License
-
-
-## Gas laws and thermodynamic processes
+mic processes
 
 The Gas Laws & Processes experiment includes interactive demonstrations of Boyle's, Charles's, Gay-Lussac's, Avogadro's, and the Combined Gas Law, plus isothermal, isobaric, isochoric, and adiabatic processes. The demonstrations use an ideal-gas model and dynamically change the available sliders for the selected relationship.
