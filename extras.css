@@ -2,46 +2,38 @@
    Soft rounded surfaces, a serif display face, teal brand colour. Heat colours (--ice/--ember) are reserved for the simulation itself.
    Token names are unchanged so every page and script keeps working. */
 :root{
-  color-scheme:light dark;
-  --paper:#eef3f6; --paper2:#e2eaef; --card:#ffffff; --track:#d5e0e7;
-  --ink:#10222e; --ink2:#53697a; --line:#d3dfe7;
-  --brand:#0f8f8a; --brand2:#2563eb;
+  color-scheme:light;
+  --paper:#fde4ec; --paper2:#f9d3e0; --card:#fff6f9; --track:#f3c6d6;
+  --ink:#3a1420; --ink2:#85505f; --line:#f0bfd0;
+  --brand:#e8432a; --brand2:#ff9a1f;
   --ember:#f0563a; --amber:#e9971a; --ice:#2f8fd8; --violet:#6d4fd6; --moss:#2f9e6b; --rose:#d6455d;
   --on-ember:#fff;
-  --scr:#0b1720; --scr-ink:#e6f1f5; --scr-dim:#7f98a6; --scr-line:rgba(255,255,255,.09);
+  --scr:#2a0f1a; --scr-ink:#ffe9ef; --scr-dim:#c99aab; --scr-line:rgba(255,255,255,.09);
   --ramp:linear-gradient(90deg,#2b2f8f,#7a3cc0 22%,#d1306f 45%,#ff6a3d 68%,#ffb23e 86%,#fff1c2);
   --heat:1;
   --hot:color-mix(in oklab,var(--ice) calc((1 - var(--heat)) * 100%),var(--ember));
-  --display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
-  --sans:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",sans-serif;
-  --mono:ui-monospace,"JetBrains Mono","SF Mono","Cascadia Mono",Consolas,monospace;
+  --display:"AmerType Md BT","AmerType Md BT Medium","American Typewriter","Rockwell","Courier New",serif;
+  --sans:"AmerType Md BT","AmerType Md BT Medium","American Typewriter","Rockwell","Courier New",serif;
+  --mono:"AmerType Md BT","AmerType Md BT Medium","American Typewriter","Courier New",monospace;
   --r:18px;
-  --shadow:0 1px 2px rgba(16,34,46,.06),0 12px 32px -16px rgba(16,34,46,.28);
-  --shadow-hover:0 2px 4px rgba(16,34,46,.08),0 22px 40px -18px rgba(16,34,46,.38);
+  --shadow:0 1px 2px rgba(120,30,50,.08),0 12px 32px -16px rgba(200,60,40,.35);
+  --shadow-hover:0 2px 4px rgba(120,30,50,.1),0 22px 40px -18px rgba(232,67,42,.5);
   --bg:var(--paper); --panel:var(--card); --panel2:var(--paper2); --border:var(--line);
   --text:var(--ink); --muted:var(--ink2);
   --cyan:var(--brand); --blue:var(--brand2); --accent:var(--brand); --accent2:var(--violet);
   --green:var(--moss); --purple:var(--violet); --orange:var(--amber); --warning:var(--amber);
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --paper:#08131a; --paper2:#0e1d27; --card:#0f202b; --track:#1a2f3d;
-    --ink:#e8f2f6; --ink2:#8aa3b2; --line:#1d3342;
-    --brand:#3fd0c4; --brand2:#6ea3ff;
-    --ember:#ff6b4a; --amber:#ffb84a; --ice:#5cc3f2; --violet:#a28bff; --moss:#6fdba6; --rose:#ff7d8f;
-    --on-ember:#0a1117;
-    --shadow:0 1px 0 rgba(255,255,255,.04) inset,0 16px 34px -18px rgba(0,0,0,.85);
-    --shadow-hover:0 1px 0 rgba(255,255,255,.06) inset,0 24px 44px -18px rgba(0,0,0,.95);
-  }
-}
 html body{
-  background:radial-gradient(900px 520px at 8% -8%,color-mix(in srgb,var(--brand) 14%,transparent),transparent 62%),
-    radial-gradient(800px 520px at 100% 100%,color-mix(in srgb,var(--brand2) 12%,transparent),transparent 62%),var(--paper);
+  background:radial-gradient(900px 520px at 8% -8%,color-mix(in srgb,#fff 70%,transparent),transparent 62%),
+    radial-gradient(800px 520px at 100% 100%,color-mix(in srgb,var(--brand2) 22%,transparent),transparent 62%),var(--paper);
   background-attachment:fixed;color:var(--ink);font-family:var(--sans);
 }
-html body::before{content:none}
+html body::before{content:"";position:fixed;left:0;right:0;bottom:0;height:150px;z-index:-1;pointer-events:none;
+  background:linear-gradient(0deg,color-mix(in srgb,var(--brand) 38%,transparent),transparent),
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='150' viewBox='0 0 120 150'%3E%3Cpath d='M20 150C4 120 24 98 22 70c14 14 22 30 16 52 10-8 14-24 12-40 26 22 34 50 10 68z' fill='%23e8432a' fill-opacity='.55'/%3E%3Cpath d='M70 150c-12-26 4-44 2-64 12 12 18 26 12 44 8-6 10-14 10-26 16 18 18 34 4 46z' fill='%23ff9a1f' fill-opacity='.6'/%3E%3Cpath d='M34 150c-5-14 4-22 4-34 8 8 10 18 6 28 4-2 6-6 6-12 6 8 6 14-2 18z' fill='%23ffd23f' fill-opacity='.8'/%3E%3C/svg%3E") bottom/120px 150px repeat-x}
 html h1,html h2,html h3,html .brand,html .site-nav-title,html .nav-brand strong,html .code{font-family:var(--display);font-weight:600;letter-spacing:-.01em;text-transform:none}
 html h1{line-height:1.08}
+html h1,html h2{text-shadow:0 2px 0 color-mix(in srgb,var(--brand2) 35%,transparent)}
 ::selection{background:var(--brand);color:var(--on-ember)}
 :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:8px}
 
@@ -81,7 +73,7 @@ html .nav-links a:hover,html .home-link:hover{color:var(--brand);border-color:va
 html footer{color:var(--ink2);border-top:1px solid var(--line)}
 html footer span,html footer strong{color:var(--brand)}
 html .btn,html a.action,html .btn-primary{
-  background:var(--brand);color:var(--on-ember);border:0;border-radius:99px;padding-inline:20px;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));color:var(--on-ember);border:0;border-radius:99px;padding-inline:20px;
   font:600 14px var(--sans);letter-spacing:0;text-transform:none;text-shadow:none;box-shadow:0 10px 22px -12px var(--brand);transition:transform .15s,box-shadow .15s;
 }
 html .btn:hover,html a.action:hover{transform:translateY(-2px);box-shadow:0 14px 26px -12px var(--brand)}
@@ -89,7 +81,7 @@ html .btn.secondary,html .btn-secondary,html a.secondary{background:transparent;
 html .btn.danger{background:var(--rose);color:#fff}
 
 /* dashboard */
-html .hero{background:linear-gradient(135deg,color-mix(in srgb,var(--brand) 16%,var(--card)),var(--card) 62%);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+html .hero{background:linear-gradient(135deg,color-mix(in srgb,var(--brand2) 28%,var(--card)),var(--card) 62%);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
 html .hero::before{border-color:color-mix(in srgb,var(--brand) 30%,transparent);box-shadow:0 0 0 35px color-mix(in srgb,var(--brand) 6%,transparent),0 0 0 75px color-mix(in srgb,var(--brand) 4%,transparent)}
 html .hero h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
 html .hero p,html .section-description,html .objective{color:var(--ink2)}
