@@ -38,7 +38,7 @@ This is a static site — GitHub Pages can host it without a backend.
 2. In your repository settings, enable **GitHub Pages** and set the source to the branch/folder containing these files (typically the root of `main`).
 3. Visit the published URL to use the project.
 
-Published simulation URL:  
+Published simulation URL:  https://shaineduquegamulao-debug.github.io/Therm/
 
 > **Note:** The 3D simulation loads Three.js from a CDN, so an internet connection is required for that page to work. Additionally, this repo is not intended for commercial use - it is intended for personal school project.
 
